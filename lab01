@@ -1,0 +1,89 @@
+public class Course {
+
+    private String courseCode;   
+    private int capacity;
+    private String day;
+    private int studentCount;
+    private double averageGrade;
+
+    public Course(String courseCode, int capacity, String day, int studentCount, double averageGrade) {
+        this.courseCode = courseCode;
+        this.capacity = capacity;
+        this.studentCount = studentCount;
+        this.day = day;
+        this.averageGrade = averageGrade;
+        
+    }
+    public boolean addGrade(double newGrade) {
+    	if(studentCount == capacity) return false;
+    	averageGrade = ((averageGrade*studentCount)+newGrade)/(studentCount + 1);
+    	studentCount++;
+    	return true;
+    }
+    public boolean removeGrade(double removedGrade) {
+    	if(studentCount == 0) return false;
+    	if(studentCount == 1) averageGrade = 0;
+    	else averageGrade = ((averageGrade*studentCount)-removedGrade)/(studentCount - 1);
+    	studentCount--;
+    	return true;
+    }
+  
+    public int getStudentCount() {
+		return studentCount;
+	}
+
+
+	public void setStudentCount(int studentCount) {
+		this.studentCount = studentCount;
+	}
+
+
+	public boolean isClassSuccesful() {
+        if(averageGrade >=60) {
+        	return true;
+        }else {
+        	return false;
+        }
+    }
+
+    public String toString() {
+        return this.getCourseCode();
+    }
+
+    public double getaverageGrade() {
+		return averageGrade;
+	}
+
+
+	public void setaverageGrade(double averageGrade) {
+		this.averageGrade = averageGrade;
+	}
+
+
+	public void setDay(String day) {
+		this.day = day;
+	}
+
+
+	public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
+    }
+
+    public String getCourseCode() {
+        return courseCode;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public String getDay() {
+        return this.day;
+    }
+
+   
+}
